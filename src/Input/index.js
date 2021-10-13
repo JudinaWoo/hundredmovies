@@ -15,7 +15,7 @@ export default class Input {
       this.input.value = this.input.value.trim();
       const hasValue = this.input.value.length > 0;
 
-      hasValue ? this.dispayClearButton() : this.hideClearButton();
+      hasValue ? this.displayClearButton() : this.hideClearButton();
     });
 
     this.wrapper.appendChild(this.input);
@@ -27,8 +27,8 @@ export default class Input {
     this.hideClearButton();
   };
 
-  dispayClearButton() {
-    if (document.getElementsByTagName("clear") === null) {
+  displayClearButton() {
+    if (document.getElementById("clear") === null) {
       this.clear = document.createElement("button");
       this.clear.setAttribute("id", "clear");
       this.clear.classList.add("clear");
@@ -41,7 +41,7 @@ export default class Input {
   }
 
   hideClearButton() {
-    this.clear.addEventListener("click", this.handleClearClick);
+    this.clear?.removeEventListener("click", this.handleClearClick);
     this.clear?.remove();
   }
 }
