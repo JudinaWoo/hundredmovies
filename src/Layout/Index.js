@@ -18,8 +18,6 @@ export default class Layout {
     const rightColumn = document.createElement("div");
     rightColumn.classList.add("column", "right-column");
 
-    console.log(right);
-
     right && rightColumn.appendChild(right);
 
     wrapper.appendChild(leftColumn);

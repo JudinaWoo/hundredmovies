@@ -7,9 +7,15 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
+    "commit": "git-cz",
     "format": "prettier --write **/*.{css,html,js,json,md}",
     "prepare": "husky install",
     "start": "webpack serve --open --config webpack.dev.js"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "lint-staged": {
     "*.{css,html,js,json,md}": "prettier --write"
@@ -17,8 +23,11 @@
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.4.0",
+    "git-cz": "^4.7.6",
     "html-webpack-plugin": "^5.3.2",
     "husky": "^7.0.2",
     "lint-staged": "^11.2.3",

@@ -1,3 +1,4 @@
+import "./theme.css";
 import "./default.css";
 
 import Layout from "./Layout";
@@ -8,9 +9,10 @@ const body = document.getElementsByTagName("body")[0];
 
 const searchScreen = new SearchScreen();
 const favoritesScreen = new FavoritesScreen();
+
 const layout = new Layout({
   left: searchScreen.render(),
-  right: favoritesScreen.render(),
+  right: favoritesScreen.render()
 });
 
 body.appendChild(layout.render());

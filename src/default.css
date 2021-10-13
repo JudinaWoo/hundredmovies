@@ -1,4 +1,9 @@
 *,
 body {
   font-family: sans-serif;
+  color: var(--main-color);
+}
+
+body {
+  margin: 0 3rem;
 }
