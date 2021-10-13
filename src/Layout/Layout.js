@@ -1,10 +1,9 @@
 export default class Layout {
-  constructor(parent) {
-    this.parent = parent;
+  constructor(props) {
+    this.props = props;
   }
 
   render = () => {
-    console.log("layout#render");
     const { left, right } = this.props;
     const wrapper = document.createElement("div");
 
@@ -16,6 +15,9 @@ export default class Layout {
     rightColumn.classList.add("right-column");
     right && rightColumn.appendChild(right);
 
-    this.parent.appendChild();
+    wrapper.appendChild(leftColumn);
+    wrapper.appendChild(rightColumn);
+
+    return wrapper;
   };
 }

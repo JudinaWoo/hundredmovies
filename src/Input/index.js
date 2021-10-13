@@ -5,19 +5,43 @@ export default class Input {
     this.props = props;
   }
   render() {
-    const wrapper = document.createElement("div");
+    this.wrapper = document.createElement("div");
 
-    const input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.classList.add("search");
+    this.input = document.createElement("input");
+    this.input.setAttribute("type", "text");
+    this.input.classList.add("search");
 
-    const clear = document.createElement("button");
-    clear.classList.add("clear");
-    const clearText = document.createTextNode("❌");
-    clear.appendChild(clearText);
-    wrapper.appendChild(input);
-    wrapper.appendChild(clear);
+    document.addEventListener("keyup", event => {
+      this.input.value = this.input.value.trim();
+      const hasValue = this.input.value.length > 0;
 
-    return wrapper;
+      hasValue ? this.dispayClearButton() : this.hideClearButton();
+    });
+
+    this.wrapper.appendChild(this.input);
+
+    return this.wrapper;
+  }
+  handleClearClick = () => {
+    this.input.value = "";
+    this.hideClearButton();
+  };
+
+  dispayClearButton() {
+    if (document.getElementsByTagName("clear") === null) {
+      this.clear = document.createElement("button");
+      this.clear.setAttribute("id", "clear");
+      this.clear.classList.add("clear");
+      const clearText = document.createTextNode("❌");
+      this.clear.appendChild(clearText);
+
+      this.wrapper.appendChild(this.clear);
+      this.clear.addEventListener("click", this.handleClearClick);
+    }
+  }
+
+  hideClearButton() {
+    this.clear.addEventListener("click", this.handleClearClick);
+    this.clear?.remove();
   }
 }
