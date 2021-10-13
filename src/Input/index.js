@@ -13,6 +13,7 @@ export default class Input {
 
     document.addEventListener("keyup", event => {
       this.input.value = this.input.value.trim();
+      this.props.onChange(this.input.value);
       const hasValue = this.input.value.length > 0;
 
       hasValue ? this.displayClearButton() : this.hideClearButton();
