@@ -6,8 +6,8 @@ module.exports = {
   devServer: {
     static: "./dist",
     compress: true,
-    port: 5000
+    port: 5000,
   },
 
-  mode: "development"
+  mode: "development",
 };
